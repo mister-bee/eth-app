@@ -3,7 +3,7 @@
 pragma solidity ^0.8.0;
 
 contract Transactions {
-    uint256 transationCount;
+    uint256 transactionCount;
 
     event Transfer(
         address from,
@@ -31,7 +31,7 @@ contract Transactions {
         string memory message,
         string memory keyword
     ) public {
-        transationCount += 1;
+        transactionCount += 1;
         transactions.push(
             TransferStruct(
                 msg.sender,
@@ -54,7 +54,7 @@ contract Transactions {
     }
 
     function getAllTransactions() public view returns (TransferStruct memory) {
-        return transactions;
+        // return transactions;
     }
 
     function getTransactionCount() public view returns (uint256) {
