@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { TransactionContext } from "../context/TransactionContext";
+
 import useFetch from "../hooks/useFetch";
 import dummyData from '../../utils/dummyData';
 import { shortenAddress } from '../../utils/shortenAddress'
 
 const TransactionsCard = ({ addressTo, addressFrom, timestamp, message, keyword, amount, url }) => {
-
   const gifUrl = useFetch({ keyword });
 
   return (
@@ -35,7 +35,7 @@ const TransactionsCard = ({ addressTo, addressFrom, timestamp, message, keyword,
         </div>
         <img
           src={gifUrl || url}
-          alt="gif"
+          alt="nature"
           className="w-full h-64 2xl:h-96 rounded-md shadow-lg object-cover"
         />
         <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
@@ -63,15 +63,9 @@ const Transactions = () => {
         )}
 
         <div className="flex flex-wrap justify-center items-center mt-10">
-
-          {[...dummyData].reverse().map((transaction, i) => (
+          {[...dummyData, ...transactions].reverse().map((transaction, i) => (
             <TransactionsCard key={i} {...transaction} />
           ))}
-          {/* {[...dummyData, ...transactions].reverse().map((transaction, i) => (
-            <TransactionsCard key={i} {...transaction} />
-          ))} */}
-
-
         </div>
       </div>
     </div>
@@ -79,31 +73,3 @@ const Transactions = () => {
 };
 
 export default Transactions;
-
-
-// import React, { useContext } from 'react';
-// import { TransactionContext } from '../context/TransactionContext';
-// import dummyData from '../../utils/dummyData';
-// import { shortenAddress } from '../../utils/shortenAddress'
-
-
-// const TransactionCard = ({addressTo, addressFrom, timestamp, })=>{
-
-// }
-
-// const Transactions = () => {
-//   const { currentAccount } = useContext(TransactionContext);
-//   console.log(dummyData)
-
-//   return (
-//     <div>
-//       <div > Show the last transactions</div>
-//       {/* {dummyData.reverse().map(({ transaction, i }) =>
-//         <h1 key={i}>{JSON.stringify(transaction?.url)}</h1>)
-//       } */}
-//       <TransactionCard key={i} {...transaction} />
-//     </div>
-//   )
-// }
-
-// export default Transactions
